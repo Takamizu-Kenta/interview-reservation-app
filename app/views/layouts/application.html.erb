@@ -14,7 +14,7 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand mb-0 h1" href="#">
+          <a class="navbar-brand mb-0 h1">
             <%= image_tag('rogo3.png', size: '50x30.5') %>
             MITAI×INOKASHIRA面談予約
           </a>
@@ -24,7 +24,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">ホーム</a>
+                <%= link_to  "ホーム", root_path, class: "nav-link active" %>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">予約確認</a>
@@ -44,23 +44,62 @@
                 </ul>
               </li>
             </ul>
+            <!-- 未ログイン-->
+            <% if (!admin_user_signed_in?) %>
+              <div class="col-md-3 text-end">
+                <%= link_to  "ログイン", new_admin_user_session_path, class: "btn btn-outline-primary me-2" %>
+                <%= link_to  "新規ユーザ登録", new_admin_user_registration_path, class: "btn btn-primary" %>
+              </div>
+            <!-- ログイン済み-->
+            <% else %>
+              <div class="col-md-3 text-end">
+                <span class="align-middle">ログイン中</span>
+              </div>
+              <div class="dropdown text-end">
+                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  <%= image_tag('person_FILL.png', size: '32x32') %>
+                </a>
+                <ul class="dropdown-menu text-small dropdown-menu-end">
+                  <li><a class="dropdown-item" href="#">新プロジェクト...</a></li>
+                  <li><a class="dropdown-item" href="#">設定</a></li>
+                  <li><a class="dropdown-item" href="#">プロフィール</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><%= link_to "ログアウト", destroy_admin_user_session_path,
+                        data: {
+                          "turbo-method": :delete
+                        }, class: "dropdown-item"
+                      %>
+                  </li>
+                </ul>
+              </div>
+            <% end %> 
           </div>
         </div>
       </nav>
     </header>
 
-    <main class="p-1" style="height: 100vh;">
+    <main class="p-1" style="height: 80vh;">
+      <% if flash[:notice] %>
+        <div class="alert alert-info">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <% if flash[:alert] %>
+        <div class="alert alert-danger">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
       <%= yield %>
     </main>
 
     <div class="fixed-bottom">
       <footer class="py-3 my-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">ホーム</a></li>
+          <li><%= link_to  "ホーム", root_path, class: "nav-link px-2 text-muted" %></li>
           <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">予約確認</a></li>
           <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">アンケート編集</a></li>
         </ul>
-        <p class="text-center text-muted">&copy; 2022 MITAI×INOKASHIRA運営</p>
+        <p class="text-center text-muted">&copy; 2022 Kenta_Takamizu</p>
       </footer>
     </div>
   </body>
