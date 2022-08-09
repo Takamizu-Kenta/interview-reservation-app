@@ -33,6 +33,9 @@ gem "jbuilder"
 # devise
 gem 'devise'
 
+# Simple Calendar
+gem 'simple_calendar'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
