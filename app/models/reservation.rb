@@ -14,6 +14,7 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
+
 class Reservation < ApplicationRecord
   validate :date_before_start
   validate :date_current_today
