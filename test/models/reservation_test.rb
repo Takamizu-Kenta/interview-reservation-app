@@ -14,10 +14,6 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
-# Indexes
-#
-#  index_reservations_on_email  (email) UNIQUE
-#
 require "test_helper"
 
 class ReservationTest < ActiveSupport::TestCase
