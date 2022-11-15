@@ -39,6 +39,9 @@ gem 'simple_calendar'
 # search
 gem 'ransack'
 
+# annotation
+gem "annotate"
+
 # better_errors
 gem 'better_errors'
 gem 'binding_of_caller'
