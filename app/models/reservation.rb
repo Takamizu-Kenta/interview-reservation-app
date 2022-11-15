@@ -23,17 +23,6 @@ class Reservation < ApplicationRecord
   validate :date_current_today
   validate :date_three_month_end
 
-  enum answer: {
-    検索エンジンで検索して: 1,
-    プレスリリースから: 2,
-    ニュースサイトから: 3,
-    知人から紹介されて: 4,
-    他サイトからリンクを辿って: 5,
-    新聞雑誌の記事から: 6,
-    "SNS(Twitter、Facebookなど)から": 7,
-    その他: 8
-  }
-
   def date_before_start
     errors.add(:day, "は過去の日付は選択できません") if day < Date.current
   end
