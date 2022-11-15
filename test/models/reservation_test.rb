@@ -4,7 +4,6 @@
 #
 #  id                :bigint           not null, primary key
 #  affiliation       :string
-#  confirm_password  :string
 #  day               :date
 #  email             :string
 #  name              :string
