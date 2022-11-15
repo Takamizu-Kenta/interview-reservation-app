@@ -16,9 +16,12 @@ class ReservationsController < ApplicationController
   end
 
   def confirm
-    @reservation = Reservation.new(reservation_params)
-    if @reservation.invalid?
-      render :new
+    @search = Reservation.ransack(params[:q])
+    @reservation =
+    if params[:q].blank? || params[:q][:email_cont] == ""
+      Reservation.none
+    else
+      @search.result
     end
   end
 
@@ -33,6 +36,6 @@ class ReservationsController < ApplicationController
 
   private
   def reservation_params
-    params.require(:reservation).permit(:name, :affiliation, :online_or_offline, :day, :time, :user_id, :start_time, :confirm_password)
+    params.require(:reservation).permit(:name, :email, :affiliation, :online_or_offline, :day, :time, :user_id, :start_time, :confirm_password)
   end
 end
