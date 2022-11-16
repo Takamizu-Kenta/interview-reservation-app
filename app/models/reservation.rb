@@ -36,7 +36,6 @@ class Reservation < ApplicationRecord
     # 今日から3ヶ月先までのデータを取得
     reservations = Reservation.all.where("day >= ?", Date.current).where("day < ?", Date.current >> 3).order(day: :desc)
     # 配列を作成し、データを格納
-    # DBアクセスを減らすために必要なデータを配列にデータを突っ込んでます
     reservation_data = []
     reservations.each do |reservation|
       reservations_hash = {}
