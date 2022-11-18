@@ -18,7 +18,7 @@ class ReservationsController < ApplicationController
   def confirm
     @search = Reservation.ransack(params[:q])
     @reservation =
-    if params[:q].blank? || params[:q][:email_cont] == ""
+    if params[:q].blank? || params[:q][:email_eq] == ""
       Reservation.none
     else
       @search.result
