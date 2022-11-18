@@ -13,8 +13,15 @@
           </div>
 
           <div class="col-md-4 mx-auto mt-3">
+            <div class="day form-group">
+              <%= form.label :email, 'メールアドレス' %>
+              <%= form.text_field :email, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="col-md-4 mx-auto mt-3">
             <div class="affiliation form-group">
-              <%= form.label :name, '学部学科' %>
+              <%= form.label :affiliation, '学部学科' %>
               <%= form.text_field :affiliation, class: 'form-control' %>
             </div>
           </div>
@@ -24,10 +31,10 @@
               <%= form.label :online_or_offline, '希望形式' %>
               <br>
               <%= form.label :online_or_offline, '対面', value: 1 %>
-              <%= form.radio_button :online_or_offline, '1', class: 'form-check-label'%>
+              <%= form.radio_button :online_or_offline, '対面', class: 'form-check-label'%>
 
               <%= form.label :online_or_offline, 'Zoom', value: 0 %>
-              <%= form.radio_button :online_or_offline, '0', class: 'form-check-label'%>
+              <%= form.radio_button :online_or_offline, 'オンライン', class: 'form-check-label'%>
             </div>
           </div>
 
@@ -42,13 +49,6 @@
             <div class="time form-group">
               <%= form.label :time, '時間' %>
               <%= form.text_field :time, class: 'form-control', value: @time, readonly: true %>
-            </div>
-          </div>
-
-          <div class="col-md-4 mx-auto mt-3">
-            <div class="time form-group">
-              <%= form.label :confirm_password, '予約確認用パスワード(半角数字4桁)' %>
-              <%= form.text_field :confirm_password, class: 'form-control', value: @confirm_password %>
             </div>
           </div>
 

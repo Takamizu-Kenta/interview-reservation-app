@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: reservations
+#
+#  id                :bigint           not null, primary key
+#  affiliation       :string
+#  day               :date
+#  email             :string
+#  name              :string
+#  online_or_offline :string
+#  start_time        :datetime
+#  time              :string
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
+
 class Reservation < ApplicationRecord
   validate :date_before_start
   validate :date_current_today
@@ -20,7 +36,6 @@ class Reservation < ApplicationRecord
     # 今日から3ヶ月先までのデータを取得
     reservations = Reservation.all.where("day >= ?", Date.current).where("day < ?", Date.current >> 3).order(day: :desc)
     # 配列を作成し、データを格納
-    # DBアクセスを減らすために必要なデータを配列にデータを突っ込んでます
     reservation_data = []
     reservations.each do |reservation|
       reservations_hash = {}
