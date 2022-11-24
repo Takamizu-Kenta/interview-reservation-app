@@ -18,6 +18,10 @@ class Reservation < ApplicationRecord
   validate :date_before_start
   validate :date_current_today
   validate :date_three_month_end
+  validates :email, { presence: true, format: { with: URI::MailTo::EMAIL_REGEXP } }
+  validates :name, presence: true
+  validates :affiliation, presence: true
+  validates :online_or_offline, presence: true
 
   def date_before_start
     errors.add(:day, "は過去の日付は選択できません") if day < Date.current
