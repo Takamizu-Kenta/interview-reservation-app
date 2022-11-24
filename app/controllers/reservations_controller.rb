@@ -35,6 +35,16 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def destroy
+    @reservation = Reservation.find(params[:id])
+    if @reservation.destroy
+      flash[:notice] = "面談予約を削除しました。"
+      redirect_to root_path
+    else
+      redirect_to confirm_reservations_path(reservation_params), flash: { alert: "削除に失敗しました。再度お試しください" }
+    end
+  end
+
   private
   def reservation_params
     params.require(:reservation).permit(:name, :email, :affiliation, :online_or_offline, :day, :time, :user_id, :start_time, :confirm_password)
