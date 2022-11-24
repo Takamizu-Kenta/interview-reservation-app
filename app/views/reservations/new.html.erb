@@ -7,28 +7,28 @@
         <div class="col-12 mt-3 content">
           <div class="col-md-4 mx-auto">
             <div class="day form-group">
-              <%= form.label :name, '名前' %>
+              <%= form.label :name, '名前' %><span class="badge rounded-pill bg-danger mx-2 mb-1">必須</span>
               <%= form.text_field :name, class: 'form-control' %>
             </div>
           </div>
 
           <div class="col-md-4 mx-auto mt-3">
             <div class="day form-group">
-              <%= form.label :email, 'メールアドレス' %>
+              <%= form.label :email, 'メールアドレス' %><span class="badge rounded-pill bg-danger mx-2 mb-1">必須</span>
               <%= form.text_field :email, class: 'form-control' %>
             </div>
           </div>
 
           <div class="col-md-4 mx-auto mt-3">
             <div class="affiliation form-group">
-              <%= form.label :affiliation, '学部学科' %>
+              <%= form.label :affiliation, '学部学科' %><span class="badge rounded-pill bg-danger mx-2 mb-1">必須</span>
               <%= form.text_field :affiliation, class: 'form-control' %>
             </div>
           </div>
 
           <div class="col-md-4 mx-auto mt-3">
             <div class="day form-group">
-              <%= form.label :online_or_offline, '希望形式' %>
+              <%= form.label :online_or_offline, '希望形式' %><span class="badge rounded-pill bg-danger mx-2 mb-1">必須</span>
               <br>
               <%= form.label :online_or_offline, '対面', value: 1 %>
               <%= form.radio_button :online_or_offline, '対面', class: 'form-check-label'%>
