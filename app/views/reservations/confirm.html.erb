@@ -42,8 +42,12 @@
                   <td><%= reservation.day %></td>
                   <td><%= reservation.time %></td>
                   <td><%= reservation.online_or_offline %></td>
-                  <td><%= link_to "変更", edit_reservation_path(reservation)%></td>
-                  <td><%= link_to "削除", reservation_path(reservation), data: { turbo_confirm: "予約を削除してもよろしいですか？", turbo_method: :delete } %></td>
+                  <% if reservation.day >= Time.current %>
+                    <td><%= link_to "変更", edit_reservation_path(reservation)%></td>
+                    <td><%= link_to "削除", reservation_path(reservation), data: { turbo_confirm: "予約を削除してもよろしいですか？", turbo_method: :delete } %></td>
+                  <% else %>
+                    <td colspan="2">終了後のため変更出来ません</td>
+                  <% end %>
                 </tr>
               <% end %>
             </tbody>
