@@ -43,7 +43,7 @@
                   <td><%= result.time %></td>
                   <td><%= result.online_or_offline %></td>
                   <td><%= link_to "変更", confirm_reservations_path%></td>
-                  <td><%= link_to "削除", confirm_reservations_path%></td>
+                  <td><%= link_to "削除", reservation_path(result.id), data: { turbo_confirm: "予約を削除してもよろしいですか？", turbo_method: :delete } %></td>
                 </tr>
               <% end %>
             </tbody>
