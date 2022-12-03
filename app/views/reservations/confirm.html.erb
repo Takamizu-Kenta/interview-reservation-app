@@ -35,15 +35,15 @@
               </tr>
             </thead>
             <tbody>
-              <% @reservation.each do |result| %>
+              <% @reservation.each do |reservation| %>
                 <tr>
-                  <td><%= result.name %></td>
-                  <td><%= result.affiliation %></td>
-                  <td><%= result.day %></td>
-                  <td><%= result.time %></td>
-                  <td><%= result.online_or_offline %></td>
-                  <td><%= link_to "変更", confirm_reservations_path%></td>
-                  <td><%= link_to "削除", reservation_path(result.id), data: { turbo_confirm: "予約を削除してもよろしいですか？", turbo_method: :delete } %></td>
+                  <td><%= reservation.name %></td>
+                  <td><%= reservation.affiliation %></td>
+                  <td><%= reservation.day %></td>
+                  <td><%= reservation.time %></td>
+                  <td><%= reservation.online_or_offline %></td>
+                  <td><%= link_to "変更", edit_reservation_path(reservation)%></td>
+                  <td><%= link_to "削除", reservation_path(reservation), data: { turbo_confirm: "予約を削除してもよろしいですか？", turbo_method: :delete } %></td>
                 </tr>
               <% end %>
             </tbody>

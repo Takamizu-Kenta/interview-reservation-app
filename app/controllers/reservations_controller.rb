@@ -35,6 +35,21 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def edit
+    @reservation = Reservation.find(params[:id])
+  end
+
+  def update
+    @reservation = Reservation.find(params[:id])
+    if @reservation.update(reservation_params)
+      flash[:notice] = "面談予約の更新が完了しました。"
+      redirect_to root_path
+    else
+      redirect_to new_reservation_path(reservation_params), flash: { alert: "予約の更新に失敗しました。再度お試しください。" }
+    end
+
+  end
+
   def destroy
     @reservation = Reservation.find(params[:id])
     if @reservation.destroy
