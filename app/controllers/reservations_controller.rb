@@ -47,7 +47,6 @@ class ReservationsController < ApplicationController
     else
       redirect_to new_reservation_path(reservation_params), flash: { alert: "予約の更新に失敗しました。再度お試しください。" }
     end
-
   end
 
   def destroy
