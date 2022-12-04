@@ -4,57 +4,61 @@
       <h1>予約確認</h1>
       <p>予約確認を行う場合は、登録時の「メールアドレス」と登録時に入力した「予約確認用パスワード」4ケタを入力してください。</p>
     </div>
-      <%= search_form_for @search, url: confirm_reservations_path, class: 'form', data: { turbo_confirm: 'この内容で照会してよろしいですか?' } do |form| %>
-        <div class="col-12 mt-3 content">
-          <div class="col-md-4 mx-auto mt-3">
-            <div class="day form-group">
-              <%= form.label :email, 'メールアドレス' %>
-              <%= form.text_field :email_eq, class: 'form-control' %>
-            </div>
-          </div>
-
-          <div class="submit mt-5">
-            <%= form.submit '予約照会する', class: 'btn btn-primary mx-auto d-block' %>
+    <%= search_form_for @search, url: confirm_reservations_path, class: "form", data: { turbo_confirm: "この内容で照会してよろしいですか?" } do |form| %>
+      <div class="col-12 mt-3 content">
+        <div class="col-md-4 mx-auto mt-3">
+          <div class="day form-group">
+            <%= form.label :email, "メールアドレス" %>
+            <%= form.text_field :email_eq, class: "form-control" %>
           </div>
         </div>
-      <% end %>
 
-      <div class="text-center mt-5">
-        <h2 class="mt-5 mb-5">検索結果</h2>
-        <% if @reservation.present? %>
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">予約者氏名</th>
-                <th scope="col">所属</th>
-                <th scope="col">面談日</th>
-                <th scope="col">予約時間</th>
-                <th scope="col">形式</th>
-                <th scope="col">予約変更</th>
-                <th scope="col">予約削除</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @reservation.each do |result| %>
-                <tr>
-                  <td><%= result.name %></td>
-                  <td><%= result.affiliation %></td>
-                  <td><%= result.day %></td>
-                  <td><%= result.time %></td>
-                  <td><%= result.online_or_offline %></td>
-                  <td><%= link_to "変更", confirm_reservations_path%></td>
-                  <td><%= link_to "削除", reservation_path(result.id), data: { turbo_confirm: "予約を削除してもよろしいですか？", turbo_method: :delete } %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        <% else %>
-          <p>予約を確認したいメールアドレスを入力してください。</p>
-        <% end %>
+        <div class="submit mt-5">
+          <%= form.submit "予約照会する", class: "btn btn-primary mx-auto d-block" %>
+        </div>
       </div>
+    <% end %>
 
-    <div class="col-12 text-right">
-      <%= link_to '戻る', reservations_path %>
+    <div class="text-center mt-5">
+      <h2 class="mt-5 mb-5">検索結果</h2>
+      <% if @reservation.present? %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">予約者氏名</th>
+              <th scope="col">所属</th>
+              <th scope="col">面談日</th>
+              <th scope="col">予約時間</th>
+              <th scope="col">形式</th>
+              <th scope="col">予約変更</th>
+              <th scope="col">予約削除</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @reservation.each do |reservation| %>
+              <tr>
+                <td><%= reservation.name %></td>
+                <td><%= reservation.affiliation %></td>
+                <td><%= reservation.day %></td>
+                <td><%= reservation.time %></td>
+                <td><%= reservation.online_or_offline %></td>
+                <% if reservation.day >= Time.current %>
+                  <td><%= link_to "変更", edit_reservation_path(reservation)%></td>
+                  <td><%= link_to "削除", reservation_path(reservation), data: { turbo_confirm: "予約を削除してもよろしいですか？", turbo_method: :delete } %></td>
+                <% else %>
+                  <td colspan="2">終了後のため変更出来ません</td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p>予約を確認したいメールアドレスを入力してください。</p>
+      <% end %>
+    </div>
+
+    <div class="col-12 text-center">
+      <%= link_to "戻る", reservations_path, class: "btn btn-secondary" %>
     </div>
   </div>
 </div>
