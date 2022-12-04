@@ -4,17 +4,17 @@
       <h1>予約確認</h1>
       <p>予約確認を行う場合は、登録時の「メールアドレス」と登録時に入力した「予約確認用パスワード」4ケタを入力してください。</p>
     </div>
-      <%= search_form_for @search, url: confirm_reservations_path, class: 'form', data: { turbo_confirm: 'この内容で照会してよろしいですか?' } do |form| %>
+      <%= search_form_for @search, url: confirm_reservations_path, class: "form", data: { turbo_confirm: "この内容で照会してよろしいですか?" } do |form| %>
         <div class="col-12 mt-3 content">
           <div class="col-md-4 mx-auto mt-3">
             <div class="day form-group">
-              <%= form.label :email, 'メールアドレス' %>
-              <%= form.text_field :email_eq, class: 'form-control' %>
+              <%= form.label :email, "メールアドレス" %>
+              <%= form.text_field :email_eq, class: "form-control" %>
             </div>
           </div>
 
           <div class="submit mt-5">
-            <%= form.submit '予約照会する', class: 'btn btn-primary mx-auto d-block' %>
+            <%= form.submit "予約照会する", class: "btn btn-primary mx-auto d-block" %>
           </div>
         </div>
       <% end %>
@@ -58,7 +58,7 @@
       </div>
 
     <div class="col-12 text-right">
-      <%= link_to '戻る', reservations_path %>
+      <%= link_to "戻る", reservations_path %>
     </div>
   </div>
 </div>
