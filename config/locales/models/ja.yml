@@ -1,8 +1,21 @@
 ja:
   activerecord:
     models:
-      reservation: 予約
+      reservation: 面談予約
+      admin_user: 管理者
     attributes:
+      admin_user:
+        name: 名前
+        email: メールアドレス
+        current_sign_in_at: 最終ログイン
+        sign_in_count: ログイン回数
+        created_at: 作成日時
       reservation:
         name: 名前
         email: メールアドレス
+        affiliation: 所属
+        online_or_offline: 形式
+        day: 日付
+        time: 時間
+        created_at: 作成日時
+        updated_at: 更新日時
