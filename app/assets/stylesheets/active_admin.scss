@@ -21,3 +21,29 @@ $panelHeaderBck: #2f2e2e;
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+
+table.index_table td, .attributes_table table th, .attributes_table table td, table.index_table td a, table.index_table td a:link, table.index_table td a:visited {
+  color: #252525;
+  font-size: 12px;
+}
+
+.attributes_table table td .empty {
+  color: red;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.attributes_table table th {
+  font-weight: bold;
+}
+
+.panel > h3 {
+  font-size: 15px;
+  margin-top: 0;
+}
+
+form input[name="interview[interview_date]"] {
+  padding: 5px 10px;
+  width: calc(80% - 22px);
+  border: 1px solid #c9d0d6;
+}
