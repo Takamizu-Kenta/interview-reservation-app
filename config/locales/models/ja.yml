@@ -1,8 +1,9 @@
 ja:
   activerecord:
     models:
-      reservation: 面談予約
+      reservation: 予約
       admin_user: 管理者
+      interview: 面談
     attributes:
       admin_user:
         name: 名前
@@ -17,5 +18,12 @@ ja:
         online_or_offline: 形式
         day: 日付
         time: 時間
+        created_at: 作成日時
+        updated_at: 更新日時
+      interview:
+        member: メンバー氏名
+        interviewer: 面談担当
+        interview_date: 面談日
+        interview_content: 面談内容
         created_at: 作成日時
         updated_at: 更新日時
