@@ -12,6 +12,7 @@
 #  time              :string
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  member_id         :integer
 #
 
 class Reservation < ApplicationRecord
@@ -22,6 +23,8 @@ class Reservation < ApplicationRecord
   validates :name, presence: true
   validates :affiliation, presence: true
   validates :online_or_offline, presence: true
+
+  belongs_to :member, primary_key: :id, foreign_key: :member_id
 
   def date_before_start
     errors.add(:day, "は過去の日付は選択できません") if day < Date.current
