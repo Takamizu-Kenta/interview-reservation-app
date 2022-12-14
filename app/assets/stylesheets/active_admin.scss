@@ -42,8 +42,12 @@ table.index_table td, .attributes_table table th, .attributes_table table td, ta
   margin-top: 0;
 }
 
-form input[name="interview[interview_date]"] {
+form input[name="interview[interview_date]"], form select[name="interview[member_id]"], form select[name="member[grade]"], form select[name="member[status]"], form select[name="member[faculty_department]"] {
   padding: 5px 10px;
-  width: calc(80% - 22px);
+  width: calc(50% - 22px);
   border: 1px solid #c9d0d6;
+}
+
+#header #utility_nav {
+  background-color: #ecf0f1;
 }
