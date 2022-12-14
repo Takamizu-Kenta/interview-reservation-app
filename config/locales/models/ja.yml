@@ -4,6 +4,7 @@ ja:
       reservation: 予約
       admin_user: 管理者
       interview: 面談
+      member: メンバー
     attributes:
       admin_user:
         name: 名前
@@ -25,5 +26,15 @@ ja:
         interviewer: 面談担当
         interview_date: 面談日
         interview_content: 面談内容
+        created_at: 作成日時
+        updated_at: 更新日時
+      member:
+        name: 名前
+        name_furigana: ふりがな
+        grade: 学年
+        generation: 期
+        faculty_department: 学部学科
+        position: 役職
+        status: ステータス
         created_at: 作成日時
         updated_at: 更新日時
