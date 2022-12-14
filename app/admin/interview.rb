@@ -1,5 +1,5 @@
 ActiveAdmin.register Interview do
-  permit_params :member, :interview_date, :interviewer, :interview_content
+  permit_params :member, :member_id, :interview_date, :interviewer, :interview_content
 
   index do
     selectable_column
