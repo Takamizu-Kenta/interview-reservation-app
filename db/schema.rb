@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_09_030724) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_14_024235) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,6 +34,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_09_030724) do
     t.datetime "interview_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "member_id"
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.string "name"
+    t.string "name_furigana"
+    t.integer "grade", comment: "学年"
+    t.integer "generation", comment: "期"
+    t.integer "faculty_department", comment: "学部学科"
+    t.string "position", comment: "役職"
+    t.integer "status", comment: "ステータス"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -46,6 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_09_030724) do
     t.datetime "start_time"
     t.string "online_or_offline"
     t.string "email"
+    t.integer "member_id"
   end
 
 end
