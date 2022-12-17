@@ -2,17 +2,18 @@
 #
 # Table name: reservations
 #
-#  id                :bigint           not null, primary key
-#  affiliation       :string
-#  day               :date
-#  email             :string
-#  name              :string
-#  online_or_offline :string
-#  start_time        :datetime
-#  time              :string
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  member_id         :integer
+#  id                          :bigint           not null, primary key
+#  day                         :date
+#  email                       :string
+#  faculty_department          :string
+#  grade                       :integer
+#  name                        :string
+#  online_or_offline(実施形式) :integer
+#  start_time                  :datetime
+#  time                        :string
+#  created_at                  :datetime         not null
+#  updated_at                  :datetime         not null
+#  member_id                   :integer
 #
 
 # This model initially had no columns defined. If you add columns to the
