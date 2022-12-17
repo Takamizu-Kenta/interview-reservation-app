@@ -29,7 +29,7 @@ class ReservationsController < ApplicationController
   def create
     member = Member.find_or_initialize_by(member_params)
     member.save
-    binding.pry
+
     @reservation = member.reservations.create!(
       name: params[:reservation][:name],
       email: params[:reservation][:email],
