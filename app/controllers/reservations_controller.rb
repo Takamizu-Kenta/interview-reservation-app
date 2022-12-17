@@ -8,7 +8,7 @@ class ReservationsController < ApplicationController
     @day = params[:day]
     @time = params[:time]
     @start_time = DateTime.parse(@day + " " + @time + " " + "JST")
-    
+
     message = Reservation.check_reservation_day(@day.to_date)
     if !!message
       redirect_to @reservation, flash: { alert: message }
@@ -25,9 +25,24 @@ class ReservationsController < ApplicationController
     end
   end
 
+
   def create
-    @reservation = Reservation.new(reservation_params)
-    if @reservation.save
+    member = Member.find_or_initialize_by(member_params)
+    member.save
+    binding.pry
+    @reservation = member.reservations.create!(
+      name: params[:reservation][:name],
+      email: params[:reservation][:email],
+      faculty_department: params[:reservation][:faculty_department],
+      grade: params[:reservation][:grade],
+      online_or_offline: params[:reservation][:online_or_offline],
+      day: params[:reservation][:day],
+      time: params[:reservation][:time],
+      start_time: params[:reservation][:start_time],
+      member_id: member.id,
+      member: member
+    )
+    if @reservation.present?
       flash[:notice] = "面談予約が完了しました。"
       redirect_to root_path
     else
@@ -61,6 +76,10 @@ class ReservationsController < ApplicationController
 
   private
   def reservation_params
-    params.require(:reservation).permit(:name, :email, :affiliation, :online_or_offline, :day, :time, :user_id, :start_time, :confirm_password)
+    params.require(:reservation).permit(:name, :email, :faculty_department, :grade, :online_or_offline, :day, :time, :start_time)
+  end
+
+  def member_params
+    { name: reservation_params[:name], email: reservation_params[:email], faculty_department: reservation_params[:faculty_department], grade: reservation_params[:grade] }
   end
 end
