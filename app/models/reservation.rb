@@ -2,17 +2,18 @@
 #
 # Table name: reservations
 #
-#  id                :bigint           not null, primary key
-#  affiliation       :string
-#  day               :date
-#  email             :string
-#  name              :string
-#  online_or_offline :string
-#  start_time        :datetime
-#  time              :string
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  member_id         :integer
+#  id                          :bigint           not null, primary key
+#  day                         :date
+#  email                       :string
+#  faculty_department          :string
+#  grade                       :integer
+#  name                        :string
+#  online_or_offline(実施形式) :integer
+#  start_time                  :datetime
+#  time                        :string
+#  created_at                  :datetime         not null
+#  updated_at                  :datetime         not null
+#  member_id                   :integer
 #
 
 class Reservation < ApplicationRecord
@@ -21,10 +22,14 @@ class Reservation < ApplicationRecord
   validate :date_three_month_end
   validates :email, { presence: true, format: { with: URI::MailTo::EMAIL_REGEXP } }
   validates :name, presence: true
-  validates :affiliation, presence: true
   validates :online_or_offline, presence: true
 
   belongs_to :member, primary_key: :id, foreign_key: :member_id
+
+  enum online_or_offline: {
+    "対面": 1,
+    "オンライン": 2
+  }
 
   def date_before_start
     errors.add(:day, "は過去の日付は選択できません") if day < Date.current

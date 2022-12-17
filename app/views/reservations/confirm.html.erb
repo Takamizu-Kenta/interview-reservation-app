@@ -29,7 +29,7 @@
           <thead>
             <tr>
               <th scope="col">予約者氏名</th>
-              <th scope="col">所属</th>
+              <th scope="col">学部学科</th>
               <th scope="col">面談日</th>
               <th scope="col">予約時間</th>
               <th scope="col">形式</th>
@@ -41,7 +41,7 @@
             <% @reservation.each do |reservation| %>
               <tr>
                 <td><%= reservation.name %></td>
-                <td><%= reservation.affiliation %></td>
+                <td><%= reservation.faculty_department %></td>
                 <td><%= reservation.day %></td>
                 <td><%= reservation.time %></td>
                 <td><%= reservation.online_or_offline %></td>

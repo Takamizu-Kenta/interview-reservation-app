@@ -15,7 +15,7 @@ ja:
       reservation:
         name: 名前
         email: メールアドレス
-        affiliation: 所属
+        faculty_department: 学部学科
         online_or_offline: 形式
         day: 日付
         time: 時間

@@ -20,21 +20,23 @@
         </div>
 
         <div class="col-md-4 mx-auto mt-3">
-          <div class="affiliation form-group">
-            <%= form.label :affiliation, "学部学科" %><span class="badge rounded-pill bg-danger mx-2 mb-1">必須</span>
-            <%= form.text_field :affiliation, class: "form-control", placeholder: "#{@reservation.affiliation}" %>
+          <div class="faculty_department form-group">
+            <%= form.label :faculty_department, "学部学科" %><span class="badge rounded-pill bg-danger mx-2 mb-1">必須</span>
+            <%= form.select :faculty_department, Member.faculty_departments.keys, {selected: Member.faculty_departments.keys[0], disabled: Member.faculty_departments.keys[0]}, class: "form-select", placeholder: "#{@reservation.faculty_department}" %>
           </div>
         </div>
 
         <div class="col-md-4 mx-auto mt-3">
-          <div class="day form-group">
-            <%= form.label :online_or_offline, "希望形式" %><span class="badge rounded-pill bg-danger mx-2 mb-1">必須</span>
-            <br>
-            <%= form.label :online_or_offline, "対面", value: 1 %>
-            <%= form.radio_button :online_or_offline, "対面", class: "form-check-label", checked: "#{@reservation.online_or_offline}" == "対面"%>
+          <div class="grade form-group">
+            <%= form.label :faculty_department, "学年" %><span class="badge rounded-pill bg-danger mx-2 mb-1">必須</span>
+            <%= form.select :faculty_department, Member.grades.keys, {selected: Member.grades.keys[0], disabled: Member.grades.keys[0]}, class: "form-select", placeholder: "#{@reservation.grade}" %>
+          </div>
+        </div>
 
-            <%= form.label :online_or_offline, "Zoom", value: 0 %>
-            <%= form.radio_button :online_or_offline, "オンライン", class: "form-check-label", checked: "#{@reservation.online_or_offline}" == "オンライン"%>
+        <div class="col-md-4 mx-auto mt-3">
+          <div class="online_or_offline form-group">
+            <%= form.label :faculty_department, "希望形式" %><span class="badge rounded-pill bg-danger mx-2 mb-1">必須</span>
+            <%= form.select :faculty_department, Reservation.online_or_offlines.keys, {selected: Reservation.online_or_offlines.keys[0], disabled: Reservation.online_or_offlines.keys[0]}, class: "form-select", placeholder: "#{@reservation.online_or_offline}" %>
           </div>
         </div>
 
@@ -59,7 +61,7 @@
       </div>
     <% end %>
 
-    <div class="col-12 text-center">
+    <div class="col-12 text-center mt-3">
       <%= link_to "戻る", reservations_path, class: "btn btn-secondary" %>
     </div>
   </div>
