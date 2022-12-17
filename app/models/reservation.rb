@@ -24,15 +24,16 @@ class Reservation < ApplicationRecord
   validates :name, presence: true
   validates :online_or_offline, presence: true
 
-  belongs_to :member, primary_key: :id, foreign_key: :member_id
+  belongs_to :member, primary_key: :id, foreign_key: :member_id, optional: true
 
   enum online_or_offline: {
+    "選択してください": 0,
     "対面": 1,
     "オンライン": 2
-  }
+  }, _prefix: true
 
   def date_before_start
-    errors.add(:day, "は過去の日付は選択できません") if day < Date.current
+    errors.add(:day, "は過去の日付は選択できません。予約画面から正しい日付を選択してください。") if day < Date.current
   end
 
   def date_current_today
@@ -40,7 +41,7 @@ class Reservation < ApplicationRecord
   end
 
   def date_three_month_end
-    errors.add(:day, "は3ヶ月以降の日付は選択できません") if (Date.current >> 3) < day
+    errors.add(:day, "は3ヶ月以降の日付は選択できません。予約画面から正しい日付を選択してください。") if (Date.current >> 3) < day
   end
 
 
