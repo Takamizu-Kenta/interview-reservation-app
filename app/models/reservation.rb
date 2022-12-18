@@ -37,7 +37,7 @@ class Reservation < ApplicationRecord
   end
 
   def date_current_today
-    errors.add(:day, "は当日は選択できません。予約画面から正しい日付を選択してください。") if day < (Date.current + 1)
+    errors.add(:day, "は当日は選択できません。予約画面から正しい日付を選択してください。") if day == Date.current
   end
 
   def date_three_month_end
