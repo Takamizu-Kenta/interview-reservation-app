@@ -3,17 +3,24 @@
 # Table name: members
 #
 #  id                           :bigint           not null, primary key
-#  faculty_department(学部学科) :string
+#  email                        :string
+#  faculty_department(学部学科) :integer
 #  generation(期)               :integer
 #  grade(学年)                  :integer
 #  name                         :string
 #  name_furigana                :string
 #  position(役職)               :string
-#  status(ステータス)           :string
+#  status(ステータス)           :integer
 #  created_at                   :datetime         not null
 #  updated_at                   :datetime         not null
 #
+# Indexes
+#
+#  index_members_on_email  (email) UNIQUE
+#
 class Member < ApplicationRecord
+  validates :email, { presence: true, format: { with: URI::MailTo::EMAIL_REGEXP } }
+
   has_many :interviews, primary_key: :id, foreign_key: :member_id, dependent: :destroy
   has_many :reservations, primary_key: :id, foreign_key: :member_id, dependent: :destroy
 

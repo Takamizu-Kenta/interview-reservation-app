@@ -22,21 +22,21 @@
         <div class="col-md-4 mx-auto mt-3">
           <div class="faculty_department form-group">
             <%= form.label :faculty_department, "学部学科" %><span class="badge rounded-pill bg-danger mx-2 mb-1">必須</span>
-            <%= form.select :faculty_department, Member.faculty_departments.keys, {selected: Member.faculty_departments.keys[0], disabled: Member.faculty_departments.keys[0]}, class: "form-select", placeholder: "#{@reservation.faculty_department}" %>
+            <%= form.select :faculty_department, Member.faculty_departments.keys, {selected: @reservation.faculty_department, disabled: Member.faculty_departments.keys[0]}, class: "form-select" %>
           </div>
         </div>
 
         <div class="col-md-4 mx-auto mt-3">
           <div class="grade form-group">
-            <%= form.label :faculty_department, "学年" %><span class="badge rounded-pill bg-danger mx-2 mb-1">必須</span>
-            <%= form.select :faculty_department, Member.grades.keys, {selected: Member.grades.keys[0], disabled: Member.grades.keys[0]}, class: "form-select", placeholder: "#{@reservation.grade}" %>
+            <%= form.label :grade, "学年" %><span class="badge rounded-pill bg-danger mx-2 mb-1">必須</span>
+            <%= form.select :grade, Member.grades.keys, {selected: @reservation.grade, disabled: Member.grades.keys[0]}, class: "form-select" %>
           </div>
         </div>
 
         <div class="col-md-4 mx-auto mt-3">
           <div class="online_or_offline form-group">
-            <%= form.label :faculty_department, "希望形式" %><span class="badge rounded-pill bg-danger mx-2 mb-1">必須</span>
-            <%= form.select :faculty_department, Reservation.online_or_offlines.keys, {selected: Reservation.online_or_offlines.keys[0], disabled: Reservation.online_or_offlines.keys[0]}, class: "form-select", placeholder: "#{@reservation.online_or_offline}" %>
+            <%= form.label :online_or_offline, "希望形式" %><span class="badge rounded-pill bg-danger mx-2 mb-1">必須</span>
+            <%= form.select :online_or_offline, Reservation.online_or_offlines.keys, {selected: @reservation.online_or_offline, disabled: Reservation.online_or_offlines.keys[0]}, class: "form-select" %>
           </div>
         </div>
 

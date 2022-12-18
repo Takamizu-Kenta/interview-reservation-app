@@ -13,16 +13,18 @@ ja:
         sign_in_count: ログイン回数
         created_at: 作成日時
       reservation:
+        member: 名前
         name: 名前
         email: メールアドレス
         faculty_department: 学部学科
+        grade: 学年
         online_or_offline: 形式
         day: 日付
         time: 時間
         created_at: 作成日時
         updated_at: 更新日時
       interview:
-        member: メンバー氏名
+        member: 名前
         interviewer: 面談担当
         interview_date: 面談日
         interview_content: 面談内容
@@ -31,6 +33,7 @@ ja:
       member:
         name: 名前
         name_furigana: ふりがな
+        email: メールアドレス
         grade: 学年
         generation: 期
         faculty_department: 学部学科
