@@ -19,6 +19,8 @@
 #  index_members_on_email  (email) UNIQUE
 #
 class Member < ApplicationRecord
+  validates :email, { presence: true, format: { with: URI::MailTo::EMAIL_REGEXP } }
+
   has_many :interviews, primary_key: :id, foreign_key: :member_id, dependent: :destroy
   has_many :reservations, primary_key: :id, foreign_key: :member_id, dependent: :destroy
 
