@@ -45,9 +45,11 @@ class ReservationsController < ApplicationController
     if @reservation.present?
       flash[:notice] = "面談予約が完了しました。"
       redirect_to root_path
-    else
-      redirect_to new_reservation_path(reservation_params), flash: { alert: "必須項目を正しく入力してください。" }
     end
+  rescue ActiveRecord::RecordInvalid => e
+    redirect_to new_reservation_path(reservation_params), flash: { alert: "#{e.message}" }
+  rescue => e
+    redirect_to new_reservation_path(reservation_params), flash: { alert: "必須項目を正しく入力してください。" }
   end
 
   def edit

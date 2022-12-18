@@ -27,6 +27,8 @@ ActiveAdmin.register Reservation do
       end
     rescue ActiveRecord::RecordInvalid => e
       redirect_to new_admin_reservation_path(reservation_params), flash: { alert: "#{e.message}" }
+    rescue => e
+      redirect_to new_admin_reservation_path(reservation_params), flash: { alert: "必須項目を正しく入力してください。" }
     end
 
     def edit
