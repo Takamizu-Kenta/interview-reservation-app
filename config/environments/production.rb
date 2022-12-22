@@ -62,7 +62,22 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "interview_reservation_app_production"
 
-  config.action_mailer.perform_caching = false
+  # MEMO: 本番環境用の設定は一旦保留
+
+  # config.action_mailer.perform_caching = false
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.default_url_options = { :host => 'localhost:3000'}
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.smtp_settings = {
+  #   :address => 'mail.kyorin-mitaiinokashira.cfbx.jp',
+  #   :port => 465,
+  #   :domain => 'kyorin-mitaiinokashira.cfbx.jp',
+  #   :user_name => ENV['MAIL_ADDRESS'],
+  #   :password => ENV['MAIL_PASSWORD'],
+  #   :authentication => :plain,
+  #   :enable_starttls_auto => true
+  # }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

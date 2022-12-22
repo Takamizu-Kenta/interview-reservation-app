@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+<body>
+  <h1>予約完了のお知らせ/内容確認メール</h1>
+
+  <p><%= @member.name %> 様</p>
+
+
+  <p>--------------------------------------------------</p>
+
+  <p>
+    面談のご予約ありがとうございます！<br>
+    下記にご予約内容を添付いたしますのでご確認ください。<br>
+    予約の変更・キャンセルがある場合は運営までお知らせください。
+  </p>
+
+  <p>--------------------------------------------------</p>
+
+  <h3>【予約確認】</h3>
+
+  <p><strong>■予約日</strong><p>
+  <p><%= @reservation.day %>--<%= @reservation.time %><p>
+
+  <p><strong>■学部学科</strong><p>
+  <p><%= @member.faculty_department %><p>
+
+  <p><strong>■学年</strong><p>
+  <p><%= @member.grade %><p>
+
+  <p><strong>■実施形式</strong><p>
+  <p><%= @reservation.online_or_offline %><p>
+
+</body>
+</html>

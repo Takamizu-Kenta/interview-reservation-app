@@ -30,7 +30,7 @@ class ReservationsController < ApplicationController
     member = Member.find_or_initialize_by(member_params)
     member.save
 
-    @reservation = member.reservations.create!(
+    reservation = member.reservations.create!(
       name: params[:reservation][:name],
       email: params[:reservation][:email],
       faculty_department: params[:reservation][:faculty_department],
@@ -42,14 +42,14 @@ class ReservationsController < ApplicationController
       member_id: member.id,
       member: member
     )
-    if @reservation.present?
-      flash[:notice] = "面談予約が完了しました。"
+    if reservation.present?
+      ReservationConfirmMailer.complete_reservation(member, reservation).deliver
+
+      flash[:notice] = "面談予約が完了しました。登録して頂いたメールアドレス宛に確認メールを送信しましたので、合わせてご確認ください。"
       redirect_to root_path
     end
-  rescue ActiveRecord::RecordInvalid => e
-    redirect_to new_reservation_path(reservation_params), flash: { alert: "#{e.message}" }
   rescue => e
-    redirect_to new_reservation_path(reservation_params), flash: { alert: "必須項目を正しく入力してください。" }
+    redirect_to new_reservation_path(reservation_params), flash: { alert: "#{e.message}" }
   end
 
   def edit
