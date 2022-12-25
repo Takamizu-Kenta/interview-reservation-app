@@ -1,99 +1,99 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MITAI×INOKASHIRA面談予約</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+  <div class="wrapper">
+    <head>
+      <title>MITAI×INOKASHIRA面談予約</title>
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-  </head>
+      <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+      <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    </head>
 
-  <body>
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand mb-0 h1">
-            <%= image_tag('rogo3.png', size: '50x30.5') %>
-            MITAI×INOKASHIRA面談予約
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <%= link_to  "ホーム", root_path, class: "nav-link active" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "予約確認", confirm_reservations_path, class: "nav-link" %>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">アンケート編集</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-            </ul>
-            <!-- 未ログイン-->
-            <% if (!admin_user_signed_in?) %>
-              <div class="col-md-3 text-end">
-                <%= link_to  "管理者ログイン", new_admin_user_session_path, class: "btn btn-outline-primary me-2" %>
-              </div>
-            <!-- ログイン済み-->
-            <% else %>
-              <div class="col-md-3 text-end">
-                <span class="align-middle">ログイン中</span>
-              </div>
-              <div class="dropdown text-end">
-                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  <%= image_tag('person_FILL.png', size: '32x32') %>
-                </a>
-                <ul class="dropdown-menu text-small dropdown-menu-end">
-                  <%= link_to  "ダッシュボード", admin_root_path, class: "dropdown-item" %>
-                  <%= link_to  "管理者", admin_admin_users_path, class: "dropdown-item" %>
-                  <%= link_to  "面談予約管理", admin_reservations_path, class: "dropdown-item" %>
-                  <%= link_to  "面談記録管理", admin_reservations_path, class: "dropdown-item" %>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><%= link_to "ログアウト", destroy_admin_user_session_path,
-                        data: {
-                          "turbo-method": :delete
-                        }, class: "dropdown-item"
-                      %>
-                  </li>
-                </ul>
-              </div>
-            <% end %> 
+    <body>
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand mb-0 h1">
+              <%= image_tag('rogo3.png', size: '50x30.5') %>
+              MITAI×INOKASHIRA面談予約
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <%= link_to  "ホーム", root_path, class: "nav-link active" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "予約確認", confirm_reservations_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">アンケート編集</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <!-- 未ログイン-->
+              <% if (!admin_user_signed_in?) %>
+                <div class="col-md-3 text-end">
+                  <%= link_to  "管理者ログイン", new_admin_user_session_path, class: "btn btn-outline-primary me-2" %>
+                </div>
+              <!-- ログイン済み-->
+              <% else %>
+                <div class="col-md-3 text-end">
+                  <span class="align-middle">ログイン中</span>
+                </div>
+                <div class="dropdown text-end">
+                  <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <%= image_tag('person_FILL.png', size: '32x32') %>
+                  </a>
+                  <ul class="dropdown-menu text-small dropdown-menu-end">
+                    <%= link_to  "ダッシュボード", admin_root_path, class: "dropdown-item" %>
+                    <%= link_to  "管理者", admin_admin_users_path, class: "dropdown-item" %>
+                    <%= link_to  "面談予約管理", admin_reservations_path, class: "dropdown-item" %>
+                    <%= link_to  "面談記録管理", admin_reservations_path, class: "dropdown-item" %>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><%= link_to "ログアウト", destroy_admin_user_session_path,
+                          data: {
+                            "turbo-method": :delete
+                          }, class: "dropdown-item"
+                        %>
+                    </li>
+                  </ul>
+                </div>
+              <% end %> 
+            </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
+      </header>
 
-    <main class="p-1" style="height: 80vh;">
-      <% if flash[:notice] %>
-        <div class="alert alert-info">
-          <%= flash[:notice] %>
-        </div>
-      <% end %>
-      <% if flash[:alert] %>
-        <div class="alert alert-danger">
-          <%= flash[:alert] %>
-        </div>
-      <% end %>
-      <%= yield %>
-    </main>
+      <main class="p-1">
+        <% if flash[:notice] %>
+          <div class="alert alert-info">
+            <%= flash[:notice] %>
+          </div>
+        <% end %>
+        <% if flash[:alert] %>
+          <div class="alert alert-danger">
+            <%= flash[:alert] %>
+          </div>
+        <% end %>
+        <%= yield %>
+      </main>
 
-    <div class="fixed-bottom">
-      <footer class="py-3 my-4">
+      <footer class="fixed-bottom">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
           <li><%= link_to  "ホーム", root_path, class: "nav-link px-2 text-muted" %></li>
           <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">予約確認</a></li>
@@ -101,6 +101,6 @@
         </ul>
         <p class="text-center text-muted">&copy; 2022 Kenta_Takamizu</p>
       </footer>
-    </div>
-  </body>
+    </body>
+  </div>
 </html>
