@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_17_075149) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_22_160800) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,6 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_17_075149) do
     t.string "email"
     t.integer "member_id"
     t.integer "grade"
+    t.string "meeting_url"
   end
 
 end
