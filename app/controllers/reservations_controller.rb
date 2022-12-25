@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
   def index
-    @reservations = Reservation.all.where("day >= ?", Date.current).where("day < ?", Date.current >> 3).order(day: :desc)
+    @reservations = Reservation.preload(:member).all.where("day >= ?", Date.current).where("day < ?", Date.current >> 3).order(day: :desc)
   end
 
   def new
@@ -27,8 +27,12 @@ class ReservationsController < ApplicationController
 
 
   def create
+    require 'zoom'
+
     member = Member.find_or_initialize_by(member_params)
     member.save
+
+    meeting_url = zoom()
 
     reservation = member.reservations.create!(
       name: params[:reservation][:name],
@@ -39,6 +43,7 @@ class ReservationsController < ApplicationController
       day: params[:reservation][:day],
       time: params[:reservation][:time],
       start_time: params[:reservation][:start_time],
+      meeting_url: meeting_url,
       member_id: member.id,
       member: member
     )
@@ -48,6 +53,8 @@ class ReservationsController < ApplicationController
       flash[:notice] = "面談予約が完了しました。登録して頂いたメールアドレス宛に確認メールを送信しましたので、合わせてご確認ください。"
       redirect_to root_path
     end
+  rescue ActiveRecord::RecordInvalid => e
+    redirect_to new_admin_reservation_path(reservation_params), flash: { alert: "必須項目を正しく入力してください。" }
   rescue => e
     redirect_to new_reservation_path(reservation_params), flash: { alert: "#{e.message}" }
   end
