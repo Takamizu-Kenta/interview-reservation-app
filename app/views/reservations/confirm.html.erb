@@ -33,7 +33,8 @@
               <th scope="col">面談日</th>
               <th scope="col">予約時間</th>
               <th scope="col">形式</th>
-              <th scope="col">予約変更</th>
+              <th scope="col">URL</th>
+              <th scope="col">予約情報変更</th>
               <th scope="col">予約削除</th>
             </tr>
           </thead>
@@ -45,6 +46,9 @@
                 <td><%= reservation.day %></td>
                 <td><%= reservation.time %></td>
                 <td><%= reservation.online_or_offline %></td>
+                <% if reservation.online_or_offline == "オンライン" %>
+                  <td><a href="<%= reservation.meeting_url %>">入室</td>
+                <% end %>
                 <% if reservation.day >= Time.current %>
                   <td><%= link_to "変更", edit_reservation_path(reservation)%></td>
                   <td><%= link_to "削除", reservation_path(reservation), data: { turbo_confirm: "予約を削除してもよろしいですか？", turbo_method: :delete } %></td>

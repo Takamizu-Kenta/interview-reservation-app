@@ -7,6 +7,7 @@
 #  email                       :string
 #  faculty_department          :string
 #  grade                       :integer
+#  meeting_url                 :string
 #  name                        :string
 #  online_or_offline(実施形式) :integer
 #  start_time                  :datetime

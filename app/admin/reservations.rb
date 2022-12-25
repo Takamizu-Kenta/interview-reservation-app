@@ -3,10 +3,14 @@ ActiveAdmin.register Reservation do
 
   controller do
     def create
+      require 'zoom'
+
       member = Member.find_or_initialize_by(member_params)
       member.save
 
-      @reservation = member.reservations.create!(
+      meeting_url = zoom()
+
+      reservation = member.reservations.create!(
         name: params[:reservation][:name],
         email: params[:reservation][:email],
         faculty_department: params[:reservation][:faculty_department],
@@ -15,20 +19,20 @@ ActiveAdmin.register Reservation do
         day: params[:reservation][:day],
         time: params[:reservation][:time],
         start_time: params[:reservation][:start_time],
+        meeting_url: meeting_url,
         member_id: member.id,
         member: member
       )
+      if reservation.present?
+        ReservationConfirmMailer.complete_reservation(member, reservation).deliver
 
-      if @reservation.present?
-        flash[:notice] = "面談予約が完了しました。"
+        flash[:notice] = "面談予約が完了しました。登録して頂いたメールアドレス宛に確認メールを送信しましたので、合わせてご確認ください。"
         redirect_to admin_reservations_path
-      else
-        redirect_to new_admin_reservation_path(reservation_params), flash: { alert: "必須項目を正しく入力してください。" }
       end
     rescue ActiveRecord::RecordInvalid => e
-      redirect_to new_admin_reservation_path(reservation_params), flash: { alert: "#{e.message}" }
-    rescue => e
       redirect_to new_admin_reservation_path(reservation_params), flash: { alert: "必須項目を正しく入力してください。" }
+    rescue => e
+      redirect_to new_admin_reservation_path(reservation_params), flash: { alert: "#{e.message}" }
     end
 
     def edit
@@ -68,7 +72,7 @@ ActiveAdmin.register Reservation do
   index do
     selectable_column
     id_column
-    column :member
+    column :name
     column :email
     column :faculty_department
     column :online_or_offline
@@ -85,6 +89,7 @@ ActiveAdmin.register Reservation do
       row :online_or_offline
       row :day
       row :time
+      row :meeting_url
       row :updated_at
       row :created_at
     end
@@ -99,6 +104,7 @@ ActiveAdmin.register Reservation do
       f.input :online_or_offline
       f.input :day, as: :date_picker
       f.input :time, as: :time_picker
+      f.input :meeting_url
     end
     f.actions
   end

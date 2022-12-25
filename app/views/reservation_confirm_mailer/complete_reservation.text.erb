@@ -24,3 +24,9 @@
 
 ■実施形式
 <%= @reservation.online_or_offline %>
+
+<% if @reservation.online_or_offline == "オンライン" %>
+  ■ミーティングURL
+  <%= @reservation.meeting_url %>
+  ※お時間になりましたら上記URLよりご入室ください。
+<% end %>
