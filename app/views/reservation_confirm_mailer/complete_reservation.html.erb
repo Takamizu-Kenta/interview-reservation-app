@@ -33,5 +33,10 @@
   <p><strong>■実施形式</strong><p>
   <p><%= @reservation.online_or_offline %><p>
 
+  <% if @reservation.online_or_offline == "オンライン" %>
+    <p><strong>■ミーティングURL</strong><p>
+    <p><a href="<%= @reservation.meeting_url %>"><%= @reservation.meeting_url %></a><p>
+    <p>※お時間になりましたら上記URLよりご入室ください。<p>
+  <% end %>
 </body>
 </html>
