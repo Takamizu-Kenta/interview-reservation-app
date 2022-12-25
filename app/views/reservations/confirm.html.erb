@@ -7,7 +7,7 @@
         該当する予約がある場合は予約が表示され、確認・変更・削除が可能です。
       </p>
     </div>
-    <%= search_form_with @search, url: confirm_reservations_path, class: "form", data: { turbo_confirm: "この内容で照会してよろしいですか?" } do |form| %>
+    <%= search_form_for @search, url: confirm_reservations_path, class: "form", data: { turbo_confirm: "この内容で照会してよろしいですか?" } do |form| %>
       <div class="col-12 mt-3 content">
         <div class="col-md-4 mx-auto mt-3">
           <div class="day form-group text-center">
