@@ -20,6 +20,7 @@ ActiveAdmin.register Reservation do
         time: params[:reservation][:time],
         start_time: params[:reservation][:start_time],
         meeting_url: meeting_url,
+        reserved: true,
         member_id: member.id,
         member: member
       )
