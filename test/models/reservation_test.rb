@@ -10,6 +10,7 @@
 #  meeting_url                 :string
 #  name                        :string
 #  online_or_offline(実施形式) :integer
+#  reserved                    :boolean
 #  start_time                  :datetime
 #  time                        :string
 #  created_at                  :datetime         not null

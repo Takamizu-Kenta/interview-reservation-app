@@ -37,16 +37,27 @@
         <% times.each do |time| %>
           <tr>
             <td><%= time %></td>
-            <% week.each do |day| %>
-              <td>
-                <% if check_reservation(reservations, day, time) %>
-                  <%= '×' %>
-                <% else %>
-                  <%= link_to new_reservation_path(day: day, time: time) do %>
-                    <%= '○' %>
+            <% if current_admin_user %>
+              <!-- 管理画面側の表示 -->
+              <% week.each do |day| %>
+                <td>
+                  <% reservation = Reservation.find_by(day: day, time: time) %>
+                  <%= check_box_tag 'reserved', true, reservation && reservation.reserved, data: { day: day, time: time }, class: "reservation_check_box" %>
+                </td>
+              <% end %>
+            <% else %>
+              <!-- アプリ側の表示 -->
+              <% week.each do |day| %>
+                <td>
+                  <% if check_reservation(reservations, day, time) %>
+                    <%= '×' %>
+                  <% else %>
+                    <%= link_to new_reservation_path(day: day, time: time) do %>
+                      <%= '○' %>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </td>
+                </td>
+              <% end %>
             <% end %>
           </tr>
         <% end %>

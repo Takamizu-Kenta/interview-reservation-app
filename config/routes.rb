@@ -10,4 +10,13 @@ Rails.application.routes.draw do
       get "confirm"
     end
   end
+
+  namespace :admin do
+    resources :reservationslotsettings, only: [:index, :update] do
+      collection do
+        post "close_reservation"
+        delete "open_reservation"
+      end
+    end
+  end
 end
