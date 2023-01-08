@@ -1,6 +1,7 @@
 ja:
   activerecord:
     models:
+      admin: 管理画面
       reservation: 予約
       admin_user: 管理者
       interview: 面談
