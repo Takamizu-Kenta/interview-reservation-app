@@ -16,6 +16,7 @@ $skinActiveColor: #f5a100;
 $skinHeaderBck: #2f2e2e;
 $panelHeaderBck: #2f2e2e;
 @import "active_skin";
+@import "simple_calendar";
 
 // Overriding any non-variable Sass must be done after the fact.
 // For example, to change the default status-tag color:
@@ -51,4 +52,21 @@ form input[id*="reservation"],form select[id*="reservation"], form input[id*="in
 
 #header #utility_nav {
   background-color: #ecf0f1;
+}
+
+.table td, .table th{
+  text-align: center;
+  font-size: 15px;
+}
+
+.reservation-header th{
+  text-align: center;
+  border-bottom: none;
+  padding-bottom: 0;
+  font-size: 18px
+}
+
+.reservation-day th{
+  width: auto;
+  border-bottom: none;
 }
