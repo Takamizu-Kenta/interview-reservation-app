@@ -2,6 +2,10 @@ ActiveAdmin.register Reservation do
   permit_params :name, :faculty_department, :day, :time, :start_time, :online_or_offline, :email
 
   controller do
+    def scoped_collection
+      Reservation.all.where.not(name: "予約停止枠")
+    end
+
     def create
       require 'zoom'
 
