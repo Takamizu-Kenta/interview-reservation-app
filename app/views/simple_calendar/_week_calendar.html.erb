@@ -42,7 +42,11 @@
               <% week.each do |day| %>
                 <td>
                   <% reservation = Reservation.find_by(day: day, time: time) %>
-                  <%= check_box_tag 'reserved', true, reservation && reservation.reserved, data: { day: day, time: time }, class: "reservation_check_box" %>
+                  <% if day <= Date.today %>
+                    <%= check_box_tag 'reserved', true, true, data: { day: day, time: time }, class: "reservation_check_box" %>
+                  <% else %>
+                    <%= check_box_tag 'reserved', true, reservation && reservation.reserved, data: { day: day, time: time }, class: "reservation_check_box" %>
+                  <% end %>
                 </td>
               <% end %>
             <% else %>
@@ -50,6 +54,8 @@
               <% week.each do |day| %>
                 <td>
                   <% if check_reservation(reservations, day, time) %>
+                    <%= '×' %>
+                  <% elsif day <= Date.today%>
                     <%= '×' %>
                   <% else %>
                     <%= link_to new_reservation_path(day: day, time: time) do %>
