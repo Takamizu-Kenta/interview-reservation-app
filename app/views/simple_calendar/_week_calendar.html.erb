@@ -55,7 +55,7 @@
                 <td>
                   <% if check_reservation(reservations, day, time) %>
                     <%= '×' %>
-                  <% elsif day <= Date.today%>
+                  <% elsif day <= Date.today.since(1.day)%>
                     <%= '×' %>
                   <% else %>
                     <%= link_to new_reservation_path(day: day, time: time) do %>
