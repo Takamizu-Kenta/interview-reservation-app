@@ -42,7 +42,7 @@
               <% week.each do |day| %>
                 <td>
                   <% reservation = Reservation.find_by(day: day, time: time) %>
-                  <% if day <= Date.today %>
+                  <% if day <= Date.today.since(1.day) %>
                     <%= check_box_tag 'reserved', true, true, data: { day: day, time: time }, class: "reservation_check_box" %>
                   <% else %>
                     <%= check_box_tag 'reserved', true, reservation && reservation.reserved, data: { day: day, time: time }, class: "reservation_check_box" %>
