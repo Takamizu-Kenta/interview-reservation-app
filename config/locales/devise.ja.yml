@@ -1,0 +1,68 @@
+# Additional translations at https://github.com/heartcombo/devise/wiki/I18n
+
+ja:
+  devise:
+    confirmations:
+      confirmed: "メールアドレスの認証が完了しました。"
+      send_instructions: "数分以内にメールアドレスの確認方法に関する指示が記載されたメールが届きます。"
+      send_paranoid_instructions: "既にメールアドレスがご登録済みの場合、数分以内にメールアドレスの確認方法に関する指示が記載されたメールが届きます。"
+    failure:
+      already_authenticated: "すでにログインしています。"
+      inactive: "アカウントがまだ有効化されていません。メールを確認し、認証を完了させてください。"
+      invalid: "無効な %{authentication_keys} またはパスワードです。"
+      locked: "アカウントがロックされています。"
+      last_attempt: "パスワードが違います。あと1回でアカウントがロックされます。"
+      not_found_in_database: "無効な %{authentication_keys} またはパスワードです。"
+      timeout: "セッション期限切れです。続行するには再度ログインしてください。"
+      unauthenticated: "続行するにはログインまたは登録が必要です。"
+      unconfirmed: "続行する前にメールアドレスを確認する必要があります。"
+    mailer:
+      confirmation_instructions:
+        subject: "確認手順"
+      reset_password_instructions:
+        subject: "パスワードリセット手順"
+      unlock_instructions:
+        subject: "アカウントロック解除手順"
+      email_changed:
+        subject: "メールアドレスが変更されました"
+      password_change:
+        subject: "パスワードが変更されました"
+    omniauth_callbacks:
+      failure: "%{kind} からの認証に失敗しました。理由: \"%{reason}\"。"
+      success: "%{kind} アカウントから正常に認証されました。"
+    passwords:
+      no_token: "パスワードリセットメールからのアクセスで無いため、このページにアクセスできません。パスワードリセットメールからアクセスしている場合は、URLに間違いがないか再度お確かめください。"
+      send_instructions: "数分以内にパスワードリセット方法に関する指示が記載されたメールが届きます。"
+      send_paranoid_instructions: "既にメールアドレスがご登録済みの場合、数分以内にパスワード再設定リンクが記載されたメールが届きます。"
+      updated: "パスワードが正常に変更されました。現在ログイン済みです。"
+    registrations:
+      destroyed: "退会処理が完了しました。ご利用ありがとうございました。"
+      signed_up: "ようこそ！新規登録が完了しました。"
+      signed_up_but_inactive: "登録は成功しましたがアカウントがまだ有効化されていないため、ログインできません。"
+      signed_up_but_locked: "登録は成功しましたがアカウントがロックされているため、ログインできません。"
+      signed_up_but_unconfirmed: "認証リンクを記載したメールを送信しました。リンクをクリックしてアカウントを有効化してください。"
+      update_needs_confirmation: "アカウントは更新されましたが、新しいメールアドレスを確認する必要があります。メールをチェックし、確認リンクをクリックして新しいメールアドレスを確認してください。"
+      updated: "登録情報が更新されました。"
+      updated_but_not_signed_in: "パスワードが変更されたため、もう一度ログインが必要です。"
+    sessions:
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
+      already_signed_out: "既にログアウトしています。"
+      admin_user:
+        signed_in: "管理者としてログインしました。"
+        signed_out: "ログアウトしました。"
+        already_signed_out: "既にログアウトしています。"
+    unlocks:
+      send_instructions: "数分以内にアカウントのロック解除方法に関する手順が記されたメールが届きます。"
+      send_paranoid_instructions: "アカウントが存在する場合、数分以内にアカウントのロック解除方法に関する手順が記されたが届きます。"
+      unlocked: "アカウントが正常にロック解除されました。続行するにはログインしてください。"
+    errors:
+      messages:
+        already_confirmed: "既に認証済みです。ログインしてください。"
+        confirmation_period_expired: "確認は %{period} 以内に行われる必要があります。新しいものをリクエストしてください。"
+        expired: "リンク期限切れです。新しいものをリクエストしてください。"
+        not_found: "ページが見つかりません"
+        not_locked: "ロックされませんでした"
+        not_saved:
+          one: "1つのエラーが原因で %{resource} の保存に失敗しました。"
+          other: "%{count} 個のエラーが原因で %{resource} の保存に失敗しました。"
