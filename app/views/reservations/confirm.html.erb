@@ -48,6 +48,8 @@
                 <td><%= reservation.online_or_offline %></td>
                 <% if reservation.online_or_offline == "オンライン" %>
                   <td><a href="<%= reservation.meeting_url %>">入室</td>
+                <% else %>
+                  <td>-</td>
                 <% end %>
                 <% if reservation.day >= Time.current %>
                   <td><%= link_to "変更", edit_reservation_path(reservation)%></td>
